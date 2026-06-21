@@ -1,0 +1,26 @@
+import socket
+
+HOST = '0.0.0.0'  # Listen on all network interfaces
+PORT = 9000
+
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind((HOST, PORT))
+server.listen(1)
+
+print(f"Server listening on {HOST}:{PORT}")
+print("Waiting for connection...")
+
+conn, addr = server.accept()
+print(f"Connected by {addr}")
+
+try:
+    while True:
+        data = conn.recv(1024)
+        if not data:
+            break
+        print(data.decode('utf-8'), end='', flush=True)
+except KeyboardInterrupt:
+    print("\nServer stopped")
+finally:
+    conn.close()
+    server.close()

@@ -1,0 +1,7 @@
+{
+    "server_address": "127.0.0.1",
+    "server_port": 9000,
+    "reconnect_delay": 5,
+    "max_reconnect_attempts": 10,
+    "poll_interval": 0.01
+}
